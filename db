@@ -1,0 +1,55 @@
+create table users
+(
+    id        integer default nextval('users_id_seq'::regclass) not null
+        constraint user_pk
+            primary key,
+    nick_name varchar(50),
+    password  varchar(50),
+    email     varchar(50)
+);
+
+alter table users
+    owner to postgres;
+
+create unique index user_id_uindex
+    on users (id);
+
+
+create table articles
+(
+    id        serial
+        constraint articles_pk
+            primary key,
+    title     varchar(200),
+    body      text,
+    tags      varchar(300),
+    author_id integer
+        constraint "articles_users (id)_fk"
+            references users
+);
+
+alter table articles
+    owner to postgres;
+
+create unique index articles_id_uindex
+    on articles (id);
+
+create table comments
+(
+    id         serial
+        constraint comments_pk
+            primary key,
+    text       varchar(300),
+    article_id integer
+        constraint comments_articles_id_fk
+            references articles,
+    author_id  integer
+        constraint comments_users_id_fk
+            references users
+);
+
+alter table comments
+    owner to postgres;
+
+create unique index comments_id_uindex
+    on comments (id);
