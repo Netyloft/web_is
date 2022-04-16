@@ -1,0 +1,52 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:postgresql://localhost:5432/forum
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        platform: postgres
+        hikari:
+            minimumIdle: 1
+            maximumPoolSize: 10
+            idleTimeout: 20000
+            auto-commit: false
+        name: PostgresDatasource
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+        database: postgresql
+        open-in-view: false
+        show-sql: false
+        hibernate:
+            ddl-auto: none  # create-drop / none / validate
+            naming:
+                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+                implicit-strategy: com.example.jpa.configuration.ImplicitNamingStrategy
+        properties:
+            hibernate:
+                id.new_generator_mappings: true
+                connection.provider_disables_autocommit: true
+                cache.use_second_level_cache: false
+                cache.use_query_cache: false
+                generate_statistics: true
+                jdbc.time_zone: UTC
+                format_sql: false
+                use_sql: false
+                temp.use_jdbc_metadata_defaults: # Disabling contextual LOB creation as createClob() method threw error
+    liquibase:
+        enabled: true
+        changeLog: classpath:liquibase/master.xml
+    jackson:
+        default-property-inclusion: non_null
+    jmx:
+        enabled: false
+    sql:
+        init:
+            platform: postgres
+
+application:
+  swagger:
+    host: localhost
