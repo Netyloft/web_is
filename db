@@ -1,6 +1,6 @@
 create table users
 (
-    id        integer default nextval('users_id_seq'::regclass) not null
+    id        serial
         constraint user_pk
             primary key,
     nick_name varchar(50),
@@ -34,6 +34,7 @@ alter table articles
 create unique index articles_id_uindex
     on articles (id);
 
+
 create table comments
 (
     id         serial
@@ -53,3 +54,4 @@ alter table comments
 
 create unique index comments_id_uindex
     on comments (id);
+
