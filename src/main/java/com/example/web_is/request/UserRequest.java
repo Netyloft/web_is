@@ -8,9 +8,6 @@ import javax.validation.constraints.NotNull;
 @Data
 public class UserRequest {
 
-    @Schema(description = "id", example = "1")
-    private Long id;
-
     @NotNull
     @Schema(description = "Ник", example = "oleg")
     private String nickName;
