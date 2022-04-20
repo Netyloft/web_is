@@ -50,3 +50,7 @@ spring:
 application:
   swagger:
     host: localhost
+
+java:
+    runtime:
+        version: 17.0.2
