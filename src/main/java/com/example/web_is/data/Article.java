@@ -13,4 +13,8 @@ public class Article {
     private User author;
     private String tags;
     private List<Comment> comments;
+
+    public final static String FILTER_ARTICLE_AUTHOR = "author";
+    public final static String FILTER_ARTICLE_TITLE = "title";
+    public final static String FILTER_ARTICLE_TAGS = "tags";
 }

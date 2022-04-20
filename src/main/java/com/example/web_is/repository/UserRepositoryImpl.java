@@ -6,12 +6,19 @@ import com.example.web_is.entity.mapper.UserEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository{
 
     private final UserDao dao;
     private final UserEntityMapper mapper;
+
+    @Override
+    public List<User> getAll() {
+        return mapper.toDto(dao.findAll());
+    }
 
     @Override
     public User get(Long id) {

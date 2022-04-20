@@ -3,7 +3,6 @@ package com.example.web_is.controller;
 import com.example.api.response.ApiResponse;
 import com.example.api.response.ApiResponseListData;
 import com.example.web_is.data.Comment;
-import com.example.web_is.data.User;
 import com.example.web_is.request.CommentRequest;
 import com.example.web_is.request.mapper.CommentRequestMapper;
 import com.example.web_is.response.CommentResponse;
@@ -14,8 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static com.example.web_is.controller.Constants.COMMENT_API_BASE_PATH;
 
