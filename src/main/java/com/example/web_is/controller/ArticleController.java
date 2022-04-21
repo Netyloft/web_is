@@ -44,6 +44,7 @@ public class ArticleController {
     @PostMapping(value = "/create")
     public ApiResponse<ArticleResponse> createArticle(@RequestBody ArticleRequest request) {
         Article article = useCase.createArticle(requestMapper.toDomain(request));
+        article.setId(null);
         return responseMapper.toResponse(article);
     }
 
