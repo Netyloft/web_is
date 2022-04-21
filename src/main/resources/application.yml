@@ -4,9 +4,9 @@ server:
 spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/forum}
-        username: ${SPRING_DATASOURCE_USERNAME:postgres}
-        password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+        url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/forum}
+        username: ${DATASOURCE_USERNAME:postgres}
+        password: ${DATASOURCE_PASSWORD:postgres}
         driver-class-name: org.postgresql.Driver
         hikari:
             minimumIdle: 1
