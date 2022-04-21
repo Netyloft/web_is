@@ -36,7 +36,6 @@ public class CommentController {
     @PostMapping(value = "/create")
     public ApiResponse<CommentResponse> createComments(@RequestBody CommentRequest request) {
         Comment comment = useCase.createComment(requestMapper.toDomain(request));
-        comment.setId(null);
         return responseMapper.toResponse(comment);
     }
 }

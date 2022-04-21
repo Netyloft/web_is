@@ -36,7 +36,6 @@ public class UserController {
     @PostMapping(value = "/create")
     public ApiResponse<UserResponse> createUser(@RequestBody UserRequest request){
         User user = useCase.createUser(requestMapper.toDomain(request));
-        user.setId(null);
         return responseMapper.toResponse(user);
     }
 }

@@ -14,7 +14,6 @@ logs/
 # Gradle files
 .gradle/
 build/
-gradlew*
 
 # Local configuration file (sdk path, etc)
 local.properties
