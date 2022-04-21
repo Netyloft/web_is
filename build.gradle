@@ -38,8 +38,16 @@ dependencies {
 
     implementation 'org.apache.poi:poi:5.0.0'
     implementation 'org.apache.poi:poi-ooxml:5.0.0'
+
+    compileOnly 'com.github.jsimone:webapp-runner:8.5.11.3'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from(configurations.compile)
 }
+
+stage.dependsOn(copyToLib)
