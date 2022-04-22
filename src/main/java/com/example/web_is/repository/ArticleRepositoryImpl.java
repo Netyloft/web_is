@@ -3,6 +3,7 @@ package com.example.web_is.repository;
 import com.example.web_is.dao.ArticleDao;
 import com.example.web_is.data.Article;
 import com.example.web_is.entity.mapper.ArticleEntityMapper;
+import com.example.web_is.filter.ArticleFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,19 @@ public class ArticleRepositoryImpl implements ArticleRepository{
 
     @Override
     public List<Article> getAll() {
+        return mapper.toDto(dao.findAll());
+    }
+
+    @Override
+    public List<Article> getAll(ArticleFilter filter) {
+        if(filter.getTags() != null){
+            return mapper.toDto(dao.findByTagsContaining(filter.getTags()));
+        }
+
+        if(filter.getTitle() != null){
+            return mapper.toDto(dao.findByTitleContaining(filter.getTitle()));
+        }
+
         return mapper.toDto(dao.findAll());
     }
 

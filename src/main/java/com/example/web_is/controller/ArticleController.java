@@ -3,6 +3,7 @@ package com.example.web_is.controller;
 import com.example.api.response.ApiResponse;
 import com.example.api.response.ApiResponseListData;
 import com.example.web_is.data.Article;
+import com.example.web_is.filter.ArticleFilter;
 import com.example.web_is.request.ArticleRequest;
 import com.example.web_is.request.mapper.ArticleRequestMapper;
 import com.example.web_is.response.ArticleResponse;
@@ -29,7 +30,10 @@ public class ArticleController {
 
     @Operation(summary = "Получить список статей")
     @GetMapping(value = "/")
-    public ApiResponse<ApiResponseListData<ArticleResponse>> getArticles() {
+    public ApiResponse<ApiResponseListData<ArticleResponse>> getArticles(@RequestParam(required = false) String title, @RequestParam(required = false) String tags) {
+        ArticleFilter articleFilter = new ArticleFilter();
+        articleFilter.setTags(tags);
+        articleFilter.setTitle(title);
         return responseMapper.toResponse(useCase.getArticles());
     }
 

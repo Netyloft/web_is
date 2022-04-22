@@ -3,6 +3,7 @@ package com.example.web_is.usecase;
 import com.example.exception.BadRequestException;
 import com.example.web_is.data.Article;
 import com.example.web_is.data.Comment;
+import com.example.web_is.filter.ArticleFilter;
 import com.example.web_is.repository.ArticleRepository;
 import com.example.web_is.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class ArticleUseCaseImpl implements ArticleUseCase {
     @Override
     public List<Article> getArticles() {
         return articleRepository.getAll();
+    }
+
+    @Override
+    public List<Article> getArticles(ArticleFilter filter) {
+        return articleRepository.getAll(filter);
     }
 
     @Override
