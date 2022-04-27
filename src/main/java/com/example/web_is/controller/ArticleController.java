@@ -30,7 +30,7 @@ public class ArticleController {
 
     @Operation(summary = "Получить список статей")
     @GetMapping(value = "/")
-    public ApiResponse<ApiResponseListData<ArticleResponse>> getArticles(@RequestParam(required = false) String title, @RequestParam(required = false) String tags) {
+    public ApiResponse<ApiResponseListData<ArticleResponse>> getArticles(@RequestParam(required = false) String title, @RequestParam(required = false) String tags, @RequestParam(required = false) Long limit, @RequestParam(required = false) Long offset) {
         ArticleFilter articleFilter = new ArticleFilter();
         articleFilter.setTags(tags);
         articleFilter.setTitle(title);
